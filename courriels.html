@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+ "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <meta name="viewport" content="initial-scale=1.0">    <!-- So that mobile webkit will display zoomed in -->
+  <meta name="format-detection" content="telephone=no"> <!-- disable auto telephone linking in iOS -->
+  <title>#Avec Lisée</title>
+  <style type="text/css">
+
+  /* Resets:see reset.css for details */
+  body{background-color:#ffffff;-webkit-text-size-adjust:none;-ms-text-size-adjust:none;}
+  body{color:#505054;font-family:Georgia, Times, 'Times New Roman', serif;margin:0;padding:0;}
+  table{border-spacing:0;border-collapse:collapse;border-spacing:0;}
+  table td{border-collapse:collapse;}
+  p{margin-bottom:1em;}
+  h1.site-title{font-size:25px;}
+  .body-content img{max-width:100%;}
+
+  /* Constrain email width for small screens */
+  @media screen and (max-width:600px) {
+    table[class="container"] { width:100%!important; }
+  }
+
+  /* Give content more room on mobile */
+  @media screen and (max-width:480px) {
+   table[class="container"] { width:100%!important; }
+   div[class="body-content"]img { width:100%; }
+   h1[class="site-title"] { font-size:25px!important; }
+ }
+
+ /* Styles for forcing columns to rows */
+ @media only screen and (max-width:600px) {
+
+  /* force container columns to (horizontal) blocks */
+  table[class="container"] { width:100%!important; }
+  h1[class="site-title"] { font-size:22px!important; }
+}
+
+</style>
+</head>
+<body style="margin:0; padding:0;background-color:#ffffff;" bgcolor="#e5e5e5" leftmargin="0" topmargin="0" marginwidth="0" marginheight="0">
+
+  <!-- 100% wrapper -->
+  <table style="background-color:#ffffff;" border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#ffffff">
+    <tr>
+      <td align="center" valign="top">
+
+        <!-- Header -->
+        <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#bf0404;border-bottom:10px solid #a20405;" bgcolor="#bf0404;">
+          <tr>
+            <td align="center" valign="top">
+              <table width="600" cellpadding="0" cellspacing="0" class="container" border="0">
+                <tr>
+                  {% if settings.site.has_meta_image? %}
+                  <td width="150" style="padding-left:0px;padding-bottom:20px;padding-top:20px;padding-right:20px;">
+                    <a href="{{ settings.site.full_url }}"><img src="{{ settings.site.meta_image_url }}" alt="{{ settings.official_name }}" width="130" height="auto" border="0" /></a>
+                  </td>
+                  {% else %}
+                  <td style="font-family:Helvetica,Arial,sans-serif;text-align:left;" valign="middle" height="100" width="80%"><a style="color:#ffffff;font-weight:bold;text-decoration:none;word-wrap:break-word;" href="{{ settings.site.full_url }}"><h1 class="site-title" style="font-size:36px;padding:20px 0;">{{ settings.official_name }}</h1></a></td>
+                  {% endif %}
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+
+        <!-- ### 600PX CONTAINER ### -->
+        <table style="font-size: 14px;background-color:#f6f6f6;" width="600" cellpadding="0" cellspacing="0" class="container" border="0" bgcolor="#f6f6f6">
+         <tr>
+          <td style="font-family:Georgia, Times, serif;padding:20px;font-size:16px;line-height:2;background-color:#f6f6f6;" bgcolor="#f6f6f6" class="body-content">{{ body }}</td>
+        </tr>
+      </table>
+
+      <table cellpadding="0" cellspacing="0" border="0" width="100%" style="background-color:#003366;" bgcolor="#003366">
+        <tr>
+          <td align="center">
+            <table width="600" cellpadding="0" cellspacing="0" class="container" border="0">
+              <tr>
+                <td style="font-family:'Helvetica',Arial,sans;padding:20px;line-height:1.5;font-size: 13px;background-color:#003366;color:#ffffff;">
+                 <p>
+                   {{ settings.official_name }}{% if settings.has_address? %} &middot; {{ settings.address.one_line }} {% endif %}
+                   <br/>Ce courriel a été envoyé à <a style="color:#ffffff;" href="{{ recipient.email }}">{{ recipient.email }}</a>.  Afin de ne plus recevoir de courriels, <a style="color:#ffffff;" href="{{ settings.site.unsubscribe_url }}">cliquez ici</a>.
+                   {% if broadcaster.has_twitter? or broadcaster.has_facebook? %}
+                   <br/>You can also keep up with {{ broadcaster.name }}
+                   {% if broadcaster.has_twitter? and broadcaster.has_facebook_page? %}
+                   on <a style="color:#ffffff;" href="{{ broadcaster.twitter_profile_url }}">Twitter</a> ou <a style="color:#ffffff;" href="{{ broadcaster.facebook_page_profile_url }}">Facebook</a>.
+                   {% elsif broadcaster.has_twitter? %}
+                   on <a style="color:#ffffff;" href="{{ broadcaster.twitter_profile_url }}">Twitter</a>.
+                   {% elsif broadcaster.has_facebook_page? %}
+                   on <a style="color:#ffffff;" href="{{ broadcaster.facebook_page_profile_url }}">Facebook</a>.
+                   {% endif %}
+                   {% endif %}
+                 </p>
+               </td>
+             </tr>
+           </table>
+         </td>
+       </tr>
+     </table>
+   </td>
+ </tr>
+</table>
+<!--/100% wrapper-->
+</body>
+</html>
+
